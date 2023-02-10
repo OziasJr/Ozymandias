@@ -215,27 +215,40 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                        }
-                    })
+                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                        pLeft.innerHTML = 0
+                        const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                        winnerLeftResult = winnerLeftFormated + 1
+                        const addResultWinner = document.createTextNode(winnerLeftResult)
+                        winnerLeft.innerHTML = ""
+                        winnerLeft.appendChild(addResultWinner)
+                        const loserRightFormated = parseInt(loserRight.textContent)
+                        loserRightResult = loserRightFormated + 1
+                        const addResultLoser = document.createTextNode(loserRightResult)
+                        loserRight.innerHTML = ""
+                        loserRight.appendChild(addResultLoser)
+                    }
+                    // Swal.fire({
+                    //     title: 'VOCÊ GANHOU!!!',
+                    //     text: 'Deseja continuar?',
+                    //     showCancelButton: true,
+                    //     cancelButtonText: 'Cancelar',
+                    //     confirmButtonText: 'Sim',
+                    // }).then((result) => {
+                    //     if (result.isConfirmed) {
+                    //         pLeft.innerHTML = 0
+                    //         const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                    //         winnerLeftResult = winnerLeftFormated + 1
+                    //         const addResultWinner = document.createTextNode(winnerLeftResult)
+                    //         winnerLeft.innerHTML = ""
+                    //         winnerLeft.appendChild(addResultWinner)
+                    //         const loserRightFormated = parseInt(loserRight.textContent)
+                    //         loserRightResult = loserRightFormated + 1
+                    //         const addResultLoser = document.createTextNode(loserRightResult)
+                    //         loserRight.innerHTML = ""
+                    //         loserRight.appendChild(addResultLoser)
+                    //     }
+                    // })
                 }, "500");
             } else if (pLeftFormated + 1 < 12) {
                 pLeftResult = pLeftFormated + 1
@@ -253,27 +266,19 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                        }
-                    })
+                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                        pLeft.innerHTML = 0
+                        const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                        winnerLeftResult = winnerLeftFormated + 1
+                        const addResultWinner = document.createTextNode(winnerLeftResult)
+                        winnerLeft.innerHTML = ""
+                        winnerLeft.appendChild(addResultWinner)
+                        const loserRightFormated = parseInt(loserRight.textContent)
+                        loserRightResult = loserRightFormated + 1
+                        const addResultLoser = document.createTextNode(loserRightResult)
+                        loserRight.innerHTML = ""
+                        loserRight.appendChild(addResultLoser)
+                    }
                 }, "500");
             } else if (pLeftFormated + 3 < 12) {
                 pLeftResult = pLeftFormated + 3
@@ -291,27 +296,19 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                        }
-                    })
+                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                        pLeft.innerHTML = 0
+                        const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                        winnerLeftResult = winnerLeftFormated + 1
+                        const addResultWinner = document.createTextNode(winnerLeftResult)
+                        winnerLeft.innerHTML = ""
+                        winnerLeft.appendChild(addResultWinner)
+                        const loserRightFormated = parseInt(loserRight.textContent)
+                        loserRightResult = loserRightFormated + 1
+                        const addResultLoser = document.createTextNode(loserRightResult)
+                        loserRight.innerHTML = ""
+                        loserRight.appendChild(addResultLoser)
+                    }
                 }, "500");
             } else if (pLeftFormated + 6 < 12) {
                 pLeftResult = pLeftFormated + 6
