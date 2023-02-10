@@ -15,11 +15,11 @@
 </head>
 <style>
     .scoreboard {
-        font-size: 12rem;
+        font-size: 8rem;
     }
 </style>
 
-<body>
+<body id="bodyScoreboard">
     <header>
         <div class="bg-dark collapse" id="navbarHeader">
             <div class="container">
@@ -151,6 +151,39 @@
                 </row>
             </div>
         </div>
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Modal
+        </button> -->
+
+
+        <!-- class="modal-open" -->
+        <!-- style="overflow: hidden; padding-right: 17px;" -->
+
+        <!-- class="modal fade show" -->
+        <!-- aria-modal="true" -->
+        <!-- role="dialog" -->
+        <!-- style="display: block;" -->
+
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header col-md-12 flex-column text-center text-bg-secondary">
+                        <button type="button" class="btn-close text-right" id="notModalOne" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title text-uppercase fw-bold m-auto" id="exampleModalLabel">Você venceu!!!</h1>
+                    </div>
+                    <div class="modal-body text-center">
+                        <h4 class="text-secondary">Deseja continuar?</h4>
+                    </div>
+                    <div class="modal-footer justify-content-between" id="notModalTwo">
+                        <button type="button" class="btn btn-secondary col-7" data-bs-dismiss="modal">Não</button>
+                        <button type="button" class="btn btn-primary col-4">Sim</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
     <footer class="text-muted py-3 bg-dark">
         <div class="container">
@@ -188,21 +221,66 @@
         var winnerRight = document.getElementById("winnerRight")
         var loserRight = document.getElementById("loserRight")
 
+        // Modal
+        const exampleModal = document.getElementById("exampleModal")
+
         oneLeft.addEventListener('click', oneLeftFunction)
         function oneLeftFunction() {
             const pLeftFormated = parseInt(pLeft.textContent)
-            if (pLeftFormated >= 12) {
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 1
-                loserRight.value = loserRightResult + 1
-            } else {
+            if (pLeftFormated + 1 >= 12) {
+                $("#bodyScoreboard").addClass("modal-open")
+                $("#bodyScoreboard").addClass("bg-secondary")
+                $("#exampleModal").addClass("show")
+                $("#exampleModal").attr('style', 'display: block;')
+                $("#exampleModal").attr('aria-hidden', 'false')
+                $("#exampleModal").attr('aria-modal', 'true')
+                $("#exampleModal").attr('role','dialog')
+                $("#modal-backdrop").removeClass("d-none")
+                
+                const notModalOne = document.getElementById("notModalOne")
+                notModalOne.addEventListener('click', notModalOneFunction)
+                function notModalOneFunction() {
+                    $("#bodyScoreboard").removeClass("modal-open")
+                    $("#bodyScoreboard").removeClass("bg-secondary")
+                    $("#exampleModal").removeClass("show")
+                    $("#exampleModal").removeAttr('style', 'display: block;')
+                    $("#exampleModal").removeAttr('aria-hidden', 'false')
+                    $("#exampleModal").removeAttr('aria-modal', 'true')
+                    $("#exampleModal").removeAttr('role','dialog')
+                    $("#modal-backdrop").addClass("d-none")
+                }
+
+                const notModalTwo = document.getElementById("notModalTwo")
+                notModalTwo.addEventListener('click', notModalTwoFunction)
+                function notModalTwoFunction() {
+                    $("#bodyScoreboard").removeClass("modal-open")
+                    $("#bodyScoreboard").removeClass("bg-secondary")
+                    $("#exampleModal").removeClass("show")
+                    $("#exampleModal").removeAttr('style', 'display: block;')
+                    $("#exampleModal").removeAttr('aria-hidden', 'false')
+                    $("#exampleModal").removeAttr('aria-modal', 'true')
+                    $("#exampleModal").removeAttr('role','dialog')
+                    $("#modal-backdrop").addClass("d-none")
+                }
+            }
+            if (pLeftFormated + 1 < 12) {
                 pLeftResult = pLeftFormated + 1
                 const add = document.createTextNode(pLeftResult)
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
             }
+            // if (pLeftFormated >= 12) {
+            //     pLeft.innerHTML = 0
+            //     const winnerLeftResult = parseInt(winnerLeft.value)
+            //     const loserRightResult = parseInt(loserRight.value)
+            //     winnerLeft.value = winnerLeftResult + 1
+            //     loserRight.value = loserRightResult + 1
+            // } else {
+            //     pLeftResult = pLeftFormated + 1
+            //     const add = document.createTextNode(pLeftResult)
+            //     pLeft.innerHTML = ""
+            //     pLeft.appendChild(add)
+            // }
         }
         threeLeft.addEventListener('click', threeLeftFunction)
         function threeLeftFunction() {
@@ -308,6 +386,7 @@
 
 
     </script>
+    <div class="modal-backdrop fade show d-none" id="modal-backdrop"></div>
 </body>
 
 </html>
