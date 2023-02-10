@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
         integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.css"></script>
     <title>Ozymandias</title>
 </head>
 <style>
@@ -95,18 +96,18 @@
                             <div class="d-lx-flex d-lg-flex d-md-flex justify-content-center gap-1">
                                 <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
                                     <div class="card-header py-1 text-bg-secondary">
-                                        <p class="my-0 fw-bold" id="winnerLeft">Vitórias</p>
+                                        <p class="my-0 fw-bold">Vitórias</p>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title text-secondary fw-bold">0</h5>
+                                        <h5 class="card-title text-secondary fw-bold" id="winnerLeft">0</h5>
                                     </div>
                                 </div>
                                 <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
                                     <div class="card-header py-1 text-bg-secondary">
-                                        <p class="my-0 fw-bold" id="loserLeft">Derrotas</p>
+                                        <p class="my-0 fw-bold">Derrotas</p>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title text-secondary fw-bold">0</h5>
+                                        <h5 class="card-title text-secondary fw-bold" id="loserLeft">0</h5>
                                     </div>
                                 </div>
                             </div>
@@ -131,10 +132,10 @@
                             <div class="d-lx-flex d-lg-flex d-md-flex justify-content-center gap-1">
                                 <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
                                     <div class="card-header py-1 text-bg-secondary">
-                                        <p class="my-0 fw-bold" id="winnerRight">Vitórias</p>
+                                        <p class="my-0 fw-bold">Vitórias</p>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title text-secondary fw-bold" id="loserRight">0</h5>
+                                        <h5 class="card-title text-secondary fw-bold" id="winnerRight">0</h5>
                                     </div>
                                 </div>
                                 <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
@@ -142,7 +143,7 @@
                                         <p class="my-0 fw-bold">Derrotas</p>
                                     </div>
                                     <div class="card-body">
-                                        <h5 class="card-title text-secondary fw-bold">0</h5>
+                                        <h5 class="card-title text-secondary fw-bold" id="loserRight">0</h5>
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +166,7 @@
         <!-- role="dialog" -->
         <!-- style="display: block;" -->
 
-        
+
     </main>
     <footer class="text-muted py-3 bg-dark">
         <div class="container">
@@ -182,6 +183,7 @@
         integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script>
         // Esquerdo
         const pLeft = document.getElementById("pLeft")
@@ -190,8 +192,8 @@
         const sixLeft = document.getElementById("sixLeft")
         const lessOneLeft = document.getElementById("lessOneLeft")
 
-        var winnerLeft = document.getElementById("winnerLeft")
-        var loserLeft = document.getElementById("loserLeft")
+        const winnerLeft = document.getElementById("winnerLeft")
+        const loserLeft = document.getElementById("loserLeft")
 
         // Direito
         const pRight = document.getElementById("pRight")
@@ -200,11 +202,11 @@
         const sixRight = document.getElementById("sixRight")
         const lessOneRight = document.getElementById("lessOneRight")
 
-        var winnerRight = document.getElementById("winnerRight")
-        var loserRight = document.getElementById("loserRight")
+        const winnerRight = document.getElementById("winnerRight")
+        const loserRight = document.getElementById("loserRight")
 
         // Modal
-        const exampleModal = document.getElementById("exampleModal")
+
 
         oneLeft.addEventListener('click', oneLeftFunction)
         function oneLeftFunction() {
@@ -215,13 +217,28 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    alert('Hi!')
-                    pLeft.innerHTML = 0
-                    const winnerLeftResult = parseInt(winnerLeft.value)
-                    const loserRightResult = parseInt(loserRight.value)
-                    winnerLeft.value = winnerLeftResult + 1
-                    loserRight.value = loserRightResult + 1
-                }, "1000");
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                        }
+                    })
+                }, "500");
             } else if (pLeftFormated + 1 < 12) {
                 pLeftResult = pLeftFormated + 1
                 const add = document.createTextNode(pLeftResult)
@@ -237,14 +254,30 @@
                 const add = document.createTextNode(pLeftResult)
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
-                alert("VOCÊ VENCEU!!!")
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 3
-                loserRight.value = loserRightResult + 3
-            }
-            if (pLeftFormated + 3 < 12) {
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                        }
+                    })
+                }, "500");
+            } else if (pLeftFormated + 3 < 12) {
                 pLeftResult = pLeftFormated + 3
                 const add = document.createTextNode(pLeftResult)
                 pLeft.innerHTML = ""
@@ -259,14 +292,30 @@
                 const add = document.createTextNode(pLeftResult)
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
-                alert("VOCÊ VENCEU!!!")
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 6
-                loserRight.value = loserRightResult + 6
-            }
-            if (pLeftFormated + 6 < 12) {
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                        }
+                    })
+                }, "500");
+            } else if (pLeftFormated + 6 < 12) {
                 pLeftResult = pLeftFormated + 6
                 const add = document.createTextNode(pLeftResult)
                 pLeft.innerHTML = ""
