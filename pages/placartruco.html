@@ -215,7 +215,7 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
                         pLeft.innerHTML = 0
                         const winnerLeftFormated = parseInt(winnerLeft.textContent)
                         winnerLeftResult = winnerLeftFormated + 1
@@ -266,7 +266,7 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
                         pLeft.innerHTML = 0
                         const winnerLeftFormated = parseInt(winnerLeft.textContent)
                         winnerLeftResult = winnerLeftFormated + 1
@@ -296,7 +296,7 @@
                 pLeft.innerHTML = ""
                 pLeft.appendChild(add)
                 setTimeout(() => {
-                    if (confirm("VOCÊ GANHOU !!!") == true) {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
                         pLeft.innerHTML = 0
                         const winnerLeftFormated = parseInt(winnerLeft.textContent)
                         winnerLeftResult = winnerLeftFormated + 1
@@ -331,55 +331,112 @@
         oneRight.addEventListener('click', oneRightFunction)
         function oneRightFunction() {
             const pRightFormated = parseInt(pRight.textContent)
-            if (pLeftFormated + 1 >= 12) {
-                alert("VOCÊ VENCEU!!!")
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 1
-                loserRight.value = loserRightResult + 1
-            }
-            if (pLeftFormated + 1 < 12) {
-                pLeftResult = pLeftFormated + 1
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+            if (pRightFormated + 1 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
+                        pRight.innerHTML = 0
+                        const winnerRightFormated = parseInt(winnerRight.textContent)
+                        winnerRightResult = winnerRightFormated + 1
+                        const addResultWinner = document.createTextNode(winnerRightResult)
+                        winnerRight.innerHTML = ""
+                        winnerRight.appendChild(addResultWinner)
+                        const loserLeftFormated = parseInt(loserLeft.textContent)
+                        loserLeftResult = loserLeftFormated + 1
+                        const addResultLoser = document.createTextNode(loserLeftResult)
+                        loserLeft.innerHTML = ""
+                        loserLeft.appendChild(addResultLoser)
+                    }
+                    // Swal.fire({
+                    //     title: 'VOCÊ GANHOU!!!',
+                    //     text: 'Deseja continuar?',
+                    //     showCancelButton: true,
+                    //     cancelButtonText: 'Cancelar',
+                    //     confirmButtonText: 'Sim',
+                    // }).then((result) => {
+                    //     if (result.isConfirmed) {
+                    //         pRight.innerHTML = 0
+                    //         const winnerRightFormated = parseInt(winnerRight.textContent)
+                    //         winnerRightResult = winnerRightFormated + 1
+                    //         const addResultWinner = document.createTextNode(winnerRightResult)
+                    //         winnerRight.innerHTML = ""
+                    //         winnerRight.appendChild(addResultWinner)
+                    //         const loserLeftFormated = parseInt(loserLeft.textContent)
+                    //         loserLeftResult = loserLeftFormated + 1
+                    //         const addResultLoser = document.createTextNode(loserLeftResult)
+                    //         loserLeft.innerHTML = ""
+                    //         loserLeft.appendChild(addResultLoser)
+                    //     }
+                    // })
+                }, "500");
+            } else if (pRightFormated + 1 < 12) {
+                pRightResult = pRightFormated + 1
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
             }
         }
         threeRight.addEventListener('click', threeRightFunction)
         function threeRightFunction() {
             const pRightFormated = parseInt(pRight.textContent)
-            if (pLeftFormated + 1 >= 12) {
-                alert("VOCÊ VENCEU!!!")
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 1
-                loserRight.value = loserRightResult + 1
-            }
-            if (pLeftFormated + 1 < 12) {
-                pLeftResult = pLeftFormated + 1
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+            if (pRightFormated + 3 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
+                        pRight.innerHTML = 0
+                        const winnerRightFormated = parseInt(winnerRight.textContent)
+                        winnerRightResult = winnerRightFormated + 1
+                        const addResultWinner = document.createTextNode(winnerRightResult)
+                        winnerRight.innerHTML = ""
+                        winnerRight.appendChild(addResultWinner)
+                        const loserLeftFormated = parseInt(loserLeft.textContent)
+                        loserLeftResult = loserLeftFormated + 1
+                        const addResultLoser = document.createTextNode(loserLeftResult)
+                        loserLeft.innerHTML = ""
+                        loserLeft.appendChild(addResultLoser)
+                    }
+                }, "500");
+            } else if (pRightFormated + 3 < 12) {
+                pRightResult = pRightFormated + 3
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
             }
         }
         sixRight.addEventListener('click', sixRightFunction)
         function sixRightFunction() {
             const pRightFormated = parseInt(pRight.textContent)
-            if (pLeftFormated + 1 >= 12) {
-                alert("VOCÊ VENCEU!!!")
-                pLeft.innerHTML = 0
-                const winnerLeftResult = parseInt(winnerLeft.value)
-                const loserRightResult = parseInt(loserRight.value)
-                winnerLeft.value = winnerLeftResult + 1
-                loserRight.value = loserRightResult + 1
-            }
-            if (pLeftFormated + 1 < 12) {
-                pLeftResult = pLeftFormated + 1
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+            if (pRightFormated + 6 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
+                        pRight.innerHTML = 0
+                        const winnerRightFormated = parseInt(winnerRight.textContent)
+                        winnerRightResult = winnerRightFormated + 1
+                        const addResultWinner = document.createTextNode(winnerRightResult)
+                        winnerRight.innerHTML = ""
+                        winnerRight.appendChild(addResultWinner)
+                        const loserLeftFormated = parseInt(loserLeft.textContent)
+                        loserLeftResult = loserLeftFormated + 1
+                        const addResultLoser = document.createTextNode(loserLeftResult)
+                        loserLeft.innerHTML = ""
+                        loserLeft.appendChild(addResultLoser)
+                    }
+                }, "500");
+            } else if (pRightFormated + 6 < 12) {
+                pRightResult = pRightFormated + 6
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
             }
         }
         lessOneRight.addEventListener('click', lessOneRightFunction)
