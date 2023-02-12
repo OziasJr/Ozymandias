@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="/assets/icon/0-circle.svg" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.min.css"></script>
+    <title>Ozymandias</title>
+</head>
+<style>
+    .timer {
+        font-size: 6rem;
+        border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
+    }
+</style>
+
+<body>
+    <header>
+        <div class="bg-dark collapse" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-white">Este site tem como objetivo criar e aprimorar algumas funcionalidades do
+                            dia a dia, desde jogos até calculadoras mais sofisticadas.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Opções</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="../relogioxadrez.html" class="text-white">Relógio de Xadrez</a></li>
+                            <li><a href="../placartruco.html" class="text-white">Placar de Truco</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="../../index.html" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                        class="bi bi-0-circle me-2" viewBox="0 0 18 16">
+                        <path
+                            d="M7.988 12.158c-1.851 0-2.941-1.57-2.941-3.99V7.84c0-2.408 1.101-3.996 2.965-3.996 1.857 0 2.935 1.57 2.935 3.996v.328c0 2.408-1.101 3.99-2.959 3.99ZM8 4.951c-1.008 0-1.629 1.09-1.629 2.895v.31c0 1.81.627 2.895 1.629 2.895s1.623-1.09 1.623-2.895v-.31c0-1.8-.621-2.895-1.623-2.895Z" />
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z" />
+                    </svg>
+                    <strong>Ozymandias</strong>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="album py-5 bg-light">
+            <div class="container text-bg-dark">
+                <row class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 g-1 text-center">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
+                        <button class="btn btn-primary py-5 col-12" id="playerOne">
+                            <h1 class="fw-bold">Jogador 1</h1>
+                        </button>
+                        <p class="lead timer fw-bold m-0 mt-1 border border-light" id="pTimerLeft">05:00</p>
+                    </div>
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
+                        <p class="lead timer fw-bold m-0 mb-1 border border-light" id="pTimerRight">05:00</p>
+                        <button class="btn btn-secondary py-5 col-12" id="playerTwo">
+                            <h1 class="fw-bold">Jogador 2</h1>
+                        </button>
+                    </div>
+                </row>
+            </div>
+            </row>
+        </div>
+        </div>
+    </main>
+    <footer class="text-muted py-3 bg-dark">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a class="text-light" href="xadrez_cinco.html">Voltar para o topo</a>
+            </p>
+            <p class="mb-1 text-light">Album example is © Bootstrap, but please download and customize it for yourself!
+            </p>
+        </div>
+    </footer>
+
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="sweetalert2.all.min.js"></script>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script>
+        const pTimerLeft = document.getElementById("pTimerLeft")
+        const pTimerRight = document.getElementById("pTimerRight")
+
+        var minutesPlayerOne = 04
+        var secondsPlayerOne = 60
+        var minutesPlayerTwo = 04
+        var secondsPlayerTwo = 60
+        var timerPlayerOne
+        var timerPlayerTwo
+
+
+        const playerOne = document.getElementById("playerOne")
+        playerOne.addEventListener('click', playerOneFunction)
+        function playerOneFunction() {
+            $("#playerOne").attr("disabled", true)
+            $("#playerOne").removeClass("btn-primary")
+            $("#playerOne").addClass("btn-danger")
+            if ($("#playerTwo").attr("disabled", true) == true) {
+                $("#playerTwo").attr("disabled", false)
+                $("#playerTwo").addClass("btn-secondary")
+                $("#playerTwo").removeClass("btn-danger")
+            } else {
+                $("#playerTwo").attr("disabled", false)
+                $("#playerTwo").addClass("btn-secondary")
+                $("#playerTwo").removeClass("btn-danger")
+            }
+            timerPlayerOne = setInterval(() => {
+                --secondsPlayerOne
+                if (minutesPlayerOne == 0 && secondsPlayerOne == 0) {
+                    pTimerRight.innerHTML = '00:00'
+                    clearInterval(timerPlayerTwo)
+                    clearInterval(timerPlayerOne)
+                    setTimeout(() => {
+                        alert('O TEMPO ACABOU !!!')
+                    }, 100);
+                } else {
+                    if (secondsPlayerOne == 0) {
+                        secondsPlayerOne = 59
+                        --minutesPlayerOne
+                    }
+                    var format = (minutesPlayerOne < 10 ? '0' + minutesPlayerOne : minutesPlayerOne) + ':' + (secondsPlayerOne < 10 ? '0' + secondsPlayerOne : secondsPlayerOne)
+                    pTimerRight.innerHTML = format
+                }
+            }, 1000);
+            clearInterval(timerPlayerTwo)
+        }
+
+        const playerTwo = document.getElementById("playerTwo")
+        playerTwo.addEventListener('click', playerTwoFunction)
+        function playerTwoFunction() {
+            $("#playerTwo").attr("disabled", true)
+            $("#playerTwo").removeClass("btn-secondary")
+            $("#playerTwo").addClass("btn-danger")
+            if ($("#playerOne").attr("disabled", true) == true) {
+                $("#playerOne").attr("disabled", false)
+                $("#playerOne").addClass("btn-primary")
+                $("#playerOne").removeClass("btn-danger")
+            } else {
+                $("#playerOne").attr("disabled", false)
+                $("#playerOne").addClass("btn-primary")
+                $("#playerOne").removeClass("btn-danger")
+            }
+            timerPlayerTwo = setInterval(() => {
+                --secondsPlayerTwo
+                if (minutesPlayerTwo == 0 && secondsPlayerTwo == 0) {
+                    pTimerLeft.innerHTML = '00:00'
+                    clearInterval(timerPlayerOne)
+                    clearInterval(timerPlayerTwo)
+                    setTimeout(() => {
+                        alert('O TEMPO ACABOU !!!')
+                    }, 100);
+                } else {
+                    if (secondsPlayerTwo == 0) {
+                        secondsPlayerTwo = 59
+                        --minutesPlayerTwo
+                    }
+                    var format = (minutesPlayerTwo < 10 ? '0' + minutesPlayerTwo : minutesPlayerTwo) + ':' + (secondsPlayerTwo < 10 ? '0' + secondsPlayerTwo : secondsPlayerTwo)
+                    pTimerLeft.innerHTML = format
+                }
+            }, 1000);
+            clearInterval(timerPlayerOne)
+        }
+    </script>
+</body>
+
+</html>
