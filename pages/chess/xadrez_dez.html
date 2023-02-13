@@ -19,6 +19,16 @@
         font-size: 6rem;
         border-radius: 0.5rem 0.5rem 0.5rem 0.5rem;
     }
+    @media screen and (min-width: 700px) {
+        .button-padding {
+            padding: 3rem 0.75rem 3rem 0.75rem;
+        }
+    }
+    @media screen and (max-width: 700px) {
+        .button-padding {
+            padding: 5rem 0.75rem 5rem 0.75rem;
+        }
+    }
 </style>
 
 <body>
@@ -60,14 +70,14 @@
             <div class="container text-bg-dark">
                 <row class="row row-cols-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-1 row-cols-xl-1 g-1 text-center">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mt-3">
-                        <button class="btn btn-primary py-5 col-12" id="playerOne">
+                        <button class="btn btn-primary button-padding col-12" id="playerOne">
                             <h1 class="fw-bold">Jogador 1</h1>
                         </button>
                         <p class="lead timer fw-bold m-0 mt-1 border border-light" id="pTimerLeft">10:00</p>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 mb-3">
                         <p class="lead timer fw-bold m-0 mb-1 border border-light" id="pTimerRight">10:00</p>
-                        <button class="btn btn-secondary py-5 col-12" id="playerTwo">
+                        <button class="btn btn-secondary button-padding col-12" id="playerTwo">
                             <h1 class="fw-bold">Jogador 2</h1>
                         </button>
                     </div>
