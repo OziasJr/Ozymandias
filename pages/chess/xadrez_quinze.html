@@ -131,7 +131,25 @@
                     clearInterval(timerPlayerTwo)
                     clearInterval(timerPlayerOne)
                     setTimeout(() => {
-                        alert('O TEMPO ACABOU !!!')
+                        Swal.fire({
+                            title: 'O TEMPO ACABOU!!!',
+                            text: 'Deseja recomeçar?',
+                            showCancelButton: true,
+                            cancelButtonText: 'Cancelar',
+                            confirmButtonText: 'Sim',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#playerOne").attr("disabled", false)
+                                $("#playerOne").addClass("btn-secondary")
+                                $("#playerOne").removeClass("btn-danger")
+                                pTimerLeft.innerHTML = '15:00'
+                                pTimerRight.innerHTML = '15:00'
+                                minutesPlayerOne = 14
+                                secondsPlayerOne = 60
+                                minutesPlayerTwo = 14
+                                secondsPlayerTwo = 60
+                            }
+                        })
                     }, 100);
                 } else {
                     if (secondsPlayerOne == 0) {
@@ -167,7 +185,25 @@
                     clearInterval(timerPlayerOne)
                     clearInterval(timerPlayerTwo)
                     setTimeout(() => {
-                        alert('O TEMPO ACABOU !!!')
+                        Swal.fire({
+                            title: 'O TEMPO ACABOU!!!',
+                            text: 'Deseja recomeçar?',
+                            showCancelButton: true,
+                            cancelButtonText: 'Cancelar',
+                            confirmButtonText: 'Sim',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                $("#playerTwo").attr("disabled", false)
+                                $("#playerTwo").addClass("btn-secondary")
+                                $("#playerTwo").removeClass("btn-danger")
+                                pTimerLeft.innerHTML = '15:00'
+                                pTimerRight.innerHTML = '15:00'
+                                minutesPlayerOne = 14
+                                secondsPlayerOne = 60
+                                minutesPlayerTwo = 14
+                                secondsPlayerTwo = 60
+                            }
+                        })
                     }, 100);
                 } else {
                     if (secondsPlayerTwo == 0) {
