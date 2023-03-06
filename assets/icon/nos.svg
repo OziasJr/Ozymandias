@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2200" height="1000" viewBox="0 0 2200 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 1041.667px;
+        fill: #010101;
+        text-anchor: middle;
+        font-family: "Comic Sans MS";
+        font-weight: 700;
+      }
+    </style>
+  </defs>
+  <text id="Nós" class="cls-1" x="1097.389" y="903.82"><tspan x="1097.389">Nós</tspan></text>
+</svg>

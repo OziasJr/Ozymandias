@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64 Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="529.167mm" height="529.167mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 52916.66 52916.66"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:#ED3237;stroke-width:500;stroke-miterlimit:22.9256}
+    .fil0 {fill:#ED3237}
+    .fil1 {fill:#373435;fill-rule:nonzero}
+   ]]>
+  </style>
+    <clipPath id="id0">
+     <path d="M-5861.16 -5872.09l64852.27 0 0 64829.7 -64852.27 0 0 -64829.7z"/>
+    </clipPath>
+    <clipPath id="id1">
+     <path d="M19963.06 24428.41l12924.62 0 65.92 4059.83 -12924.62 0 -65.92 -4059.83z"/>
+    </clipPath>
+ </defs>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2670046978992">
+   <g style="clip-path:url(#id0)">
+    <image x="-5861.16" y="-5872.09" width="64852.27" height="64829.7" xlink:href="Ouro_Images\Ouro_ImgID1.png"/>
+   </g>
+  </g>
+  <rect class="fil0 str0" transform="matrix(0.524893 -0.52805 0.562144 0.565524 1974.3 26667)" width="46848.9" height="43744.45"/>
+  <g id="_2670046977360">
+   <g style="clip-path:url(#id1)">
+    <image x="19963.06" y="24428.41" width="12990.54" height="4059.83" xlink:href="Ouro_Images\Ouro_ImgID2.png"/>
+   </g>
+  </g>
+  <path class="fil1" d="M30961.63 27800.67c-1680.09,171.56 -4667.61,260.52 -8962.55,260.52 -1035.84,0 -1553.77,-482.91 -1553.77,-1448.74 0,-965.81 517.93,-1448.72 1553.77,-1448.72 978.99,0 2438.01,-44.48 4389.69,-133.44 1945.36,-88.96 3410.7,-133.44 4383.37,-133.44 1099.01,0 1648.51,482.92 1648.51,1448.73 0,857.81 -486.35,1340.71 -1459.02,1455.09z"/>
+ </g>
+</svg>

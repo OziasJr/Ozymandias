@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg" href="/assets/icon/ankh-solid.svg"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+        integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.min.css">
+    <title>WSJR</title>
+</head>
+<style>
+    .scoreboard {
+        font-size: 8rem;
+    }
+</style>
+
+<body id="bodyScoreboard">
+    <header>
+        <div class="bg-dark collapse" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <h4 class="text-white">About</h4>
+                        <p class="text-white">Este site tem como objetivo criar e aprimorar algumas funcionalidades do
+                            dia a dia, desde jogos até calculadoras mais sofisticadas.</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Opções</h4>
+                        <ul class="list-unstyled">
+                            <li><a href="relogioxadrez.html" class="text-white">Relógio de Xadrez</a></li>
+                            <li><a href="placartruco.html" class="text-white">Placar de Truco</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <a href="../../index.html" class="navbar-brand d-flex align-items-center">
+                    <i class="fas fa-ankh me-2"></i>
+                    <strong class="text-uppercase">wsjr</strong>
+                </a>
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <!-- <section class="py-5 text-center container">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Album example</h1>
+                    <p class="lead text-muted">Something short and leading about the collection below—its contents, the
+                        creator, etc. Make it short and sweet, but not too short so folks don’t simply skip over it
+                        entirely.</p>
+                    <p>
+                        <a href="#" class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 my-2">Main call to action</a>
+                        <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+                    </p>
+                </div>
+            </div>
+        </section> -->
+        <div class="album py-5 bg-light">
+            <div class="container text-bg-dark">
+                <row class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-2 text-center">
+                    <div class="col mb-3">
+                        <div class="my-2">
+                            <h2 class="display-5 fw-bold text-uppercase">Nós</h2>
+                            <p class="lead scoreboard fw-bold" id="pLeft">0</p>
+                            <div class="d-grid gap-3 col-12 mx-auto d-md-block mb-xl-1 mb-lg-1 mb-md-1 mb-sm-3 mb-3">
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="oneLeft">+1</button>
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="threeLeft">+3</button>
+                            </div>
+                            <div class="d-grid gap-3 col-12 mx-auto d-md-block mb-xl-1 mb-lg-1 mb-md-1 mb-sm-3 mb-3">
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="sixLeft">+6</button>
+                                <button class="btn btn-primary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="lessOneLeft">-1</button>
+                            </div>
+                            <div class="d-lx-flex d-lg-flex d-md-flex justify-content-center gap-1">
+                                <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
+                                    <div class="card-header py-1 text-bg-secondary">
+                                        <p class="my-0 fw-bold">Vitórias</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-secondary fw-bold" id="winnerLeft">0</h5>
+                                    </div>
+                                </div>
+                                <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
+                                    <div class="card-header py-1 text-bg-secondary">
+                                        <p class="my-0 fw-bold">Derrotas</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-secondary fw-bold" id="loserLeft">0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="my-2">
+                            <h2 class="display-5 fw-bold text-uppercase">Eles</h2>
+                            <p class="lead scoreboard fw-bold" id="pRight">0</p>
+                            <div class="d-grid gap-3 col-12 mx-auto d-md-block mb-xl-1 mb-lg-1 mb-md-1 mb-sm-3 mb-3">
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="oneRight">+1</button>
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="threeRight">+3</button>
+                            </div>
+                            <div class="d-grid gap-3 col-12 mx-auto d-md-block mb-xl-1 mb-lg-1 mb-md-1 mb-sm-3 mb-3">
+                                <button class="btn btn-secondary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="sixRight">+6</button>
+                                <button class="btn btn-primary col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 fw-bold"
+                                    type="button" id="lessOneRight">-1</button>
+                            </div>
+                            <div class="d-lx-flex d-lg-flex d-md-flex justify-content-center gap-1">
+                                <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
+                                    <div class="card-header py-1 text-bg-secondary">
+                                        <p class="my-0 fw-bold">Vitórias</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-secondary fw-bold" id="winnerRight">0</h5>
+                                    </div>
+                                </div>
+                                <div class="card border-none col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-3">
+                                    <div class="card-header py-1 text-bg-secondary">
+                                        <p class="my-0 fw-bold">Derrotas</p>
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title text-secondary fw-bold" id="loserRight">0</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </row>
+            </div>
+        </div>
+        <!-- Button trigger modal -->
+        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Modal
+        </button> -->
+
+
+        <!-- class="modal-open" -->
+        <!-- style="overflow: hidden; padding-right: 17px;" -->
+
+        <!-- class="modal fade show" -->
+        <!-- aria-modal="true" -->
+        <!-- role="dialog" -->
+        <!-- style="display: block;" -->
+
+
+    </main>
+    <footer class="text-muted py-3 bg-dark">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a class="text-light" href="placartruco.html">Voltar para o topo</a>
+            </p>
+            <p class="mb-1 text-light">Album example is © Bootstrap, but please download and customize it for yourself!
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+        integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
+    <script>
+        // Esquerdo
+        const pLeft = document.getElementById("pLeft")
+        const oneLeft = document.getElementById("oneLeft")
+        const threeLeft = document.getElementById("threeLeft")
+        const sixLeft = document.getElementById("sixLeft")
+        const lessOneLeft = document.getElementById("lessOneLeft")
+
+        const winnerLeft = document.getElementById("winnerLeft")
+        const loserLeft = document.getElementById("loserLeft")
+
+        // Direito
+        const pRight = document.getElementById("pRight")
+        const oneRight = document.getElementById("oneRight")
+        const threeRight = document.getElementById("threeRight")
+        const sixRight = document.getElementById("sixRight")
+        const lessOneRight = document.getElementById("lessOneRight")
+
+        const winnerRight = document.getElementById("winnerRight")
+        const loserRight = document.getElementById("loserRight")
+
+        oneLeft.addEventListener('click', oneLeftFunction)
+        function oneLeftFunction() {
+            const pLeftFormated = parseInt(pLeft.textContent)
+            if (pLeftFormated + 1 >= 12) {
+                pLeftResult = 12
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                            pRightResult = 0
+                            const add = document.createTextNode(pRightResult)
+                            pRight.innerHTML = ""
+                            pRight.appendChild(add)
+                        }
+                    })
+                }, "50");
+            } else if (pLeftFormated + 1 < 12) {
+                pLeftResult = pLeftFormated + 1
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+            }
+        }
+        threeLeft.addEventListener('click', threeLeftFunction)
+        function threeLeftFunction() {
+            const pLeftFormated = parseInt(pLeft.textContent)
+            if (pLeftFormated + 3 >= 12) {
+                pLeftResult = 12
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                            pRightResult = 0
+                            const add = document.createTextNode(pRightResult)
+                            pRight.innerHTML = ""
+                            pRight.appendChild(add)
+                        }
+                    })
+                }, "50");
+            } else if (pLeftFormated + 3 < 12) {
+                pLeftResult = pLeftFormated + 3
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+            }
+        }
+        sixLeft.addEventListener('click', sixLeftFunction)
+        function sixLeftFunction() {
+            const pLeftFormated = parseInt(pLeft.textContent)
+            if (pLeftFormated + 6 >= 12) {
+                pLeftResult = 12
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pLeft.innerHTML = 0
+                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                            winnerLeftResult = winnerLeftFormated + 1
+                            const addResultWinner = document.createTextNode(winnerLeftResult)
+                            winnerLeft.innerHTML = ""
+                            winnerLeft.appendChild(addResultWinner)
+                            const loserRightFormated = parseInt(loserRight.textContent)
+                            loserRightResult = loserRightFormated + 1
+                            const addResultLoser = document.createTextNode(loserRightResult)
+                            loserRight.innerHTML = ""
+                            loserRight.appendChild(addResultLoser)
+                            pRightResult = 0
+                            const add = document.createTextNode(pRightResult)
+                            pRight.innerHTML = ""
+                            pRight.appendChild(add)
+                        }
+                    })
+                    // if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
+                    //     pLeft.innerHTML = 0
+                    //     const winnerLeftFormated = parseInt(winnerLeft.textContent)
+                    //     winnerLeftResult = winnerLeftFormated + 1
+                    //     const addResultWinner = document.createTextNode(winnerLeftResult)
+                    //     winnerLeft.innerHTML = ""
+                    //     winnerLeft.appendChild(addResultWinner)
+                    //     const loserRightFormated = parseInt(loserRight.textContent)
+                    //     loserRightResult = loserRightFormated + 1
+                    //     const addResultLoser = document.createTextNode(loserRightResult)
+                    //     loserRight.innerHTML = ""
+                    //     loserRight.appendChild(addResultLoser)
+                    //     pRightResult = 0
+                    //     const add = document.createTextNode(pRightResult)
+                    //     pRight.innerHTML = ""
+                    //     pRight.appendChild(add)
+                    // }
+                }, "50");
+            } else if (pLeftFormated + 6 < 12) {
+                pLeftResult = pLeftFormated + 6
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+            }
+        }
+        lessOneLeft.addEventListener('click', lessOneLeftFunction)
+        function lessOneLeftFunction() {
+            const pLeftFormated = parseInt(pLeft.textContent)
+            if (pLeftFormated != 0) {
+                pLeftResult = pLeftFormated - 1
+                const add = document.createTextNode(pLeftResult)
+                pLeft.innerHTML = ""
+                pLeft.appendChild(add)
+            }
+        }
+
+        oneRight.addEventListener('click', oneRightFunction)
+        function oneRightFunction() {
+            const pRightFormated = parseInt(pRight.textContent)
+            if (pRightFormated + 1 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pRight.innerHTML = 0
+                            const winnerRightFormated = parseInt(winnerRight.textContent)
+                            winnerRightResult = winnerRightFormated + 1
+                            const addResultWinner = document.createTextNode(winnerRightResult)
+                            winnerRight.innerHTML = ""
+                            winnerRight.appendChild(addResultWinner)
+                            const loserLeftFormated = parseInt(loserLeft.textContent)
+                            loserLeftResult = loserLeftFormated + 1
+                            const addResultLoser = document.createTextNode(loserLeftResult)
+                            loserLeft.innerHTML = ""
+                            loserLeft.appendChild(addResultLoser)
+                            pLeftResult = 0
+                            const add = document.createTextNode(pLeftResult)
+                            pLeft.innerHTML = ""
+                            pLeft.appendChild(add)
+                        }
+                    })
+                    // Swal.fire({
+                    //     title: 'VOCÊ GANHOU!!!',
+                    //     text: 'Deseja continuar?',
+                    //     showCancelButton: true,
+                    //     cancelButtonText: 'Cancelar',
+                    //     confirmButtonText: 'Sim',
+                    // }).then((result) => {
+                    //     if (result.isConfirmed) {
+                    //         pRight.innerHTML = 0
+                    //         const winnerRightFormated = parseInt(winnerRight.textContent)
+                    //         winnerRightResult = winnerRightFormated + 1
+                    //         const addResultWinner = document.createTextNode(winnerRightResult)
+                    //         winnerRight.innerHTML = ""
+                    //         winnerRight.appendChild(addResultWinner)
+                    //         const loserLeftFormated = parseInt(loserLeft.textContent)
+                    //         loserLeftResult = loserLeftFormated + 1
+                    //         const addResultLoser = document.createTextNode(loserLeftResult)
+                    //         loserLeft.innerHTML = ""
+                    //         loserLeft.appendChild(addResultLoser)
+                    //     }
+                    // })
+                }, "50");
+            } else if (pRightFormated + 1 < 12) {
+                pRightResult = pRightFormated + 1
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+            }
+        }
+        threeRight.addEventListener('click', threeRightFunction)
+        function threeRightFunction() {
+            const pRightFormated = parseInt(pRight.textContent)
+            if (pRightFormated + 3 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pRight.innerHTML = 0
+                            const winnerRightFormated = parseInt(winnerRight.textContent)
+                            winnerRightResult = winnerRightFormated + 1
+                            const addResultWinner = document.createTextNode(winnerRightResult)
+                            winnerRight.innerHTML = ""
+                            winnerRight.appendChild(addResultWinner)
+                            const loserLeftFormated = parseInt(loserLeft.textContent)
+                            loserLeftResult = loserLeftFormated + 1
+                            const addResultLoser = document.createTextNode(loserLeftResult)
+                            loserLeft.innerHTML = ""
+                            loserLeft.appendChild(addResultLoser)
+                            pLeftResult = 0
+                            const add = document.createTextNode(pLeftResult)
+                            pLeft.innerHTML = ""
+                            pLeft.appendChild(add)
+                        }
+                    })
+                }, "50");
+            } else if (pRightFormated + 3 < 12) {
+                pRightResult = pRightFormated + 3
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+            }
+        }
+        sixRight.addEventListener('click', sixRightFunction)
+        function sixRightFunction() {
+            const pRightFormated = parseInt(pRight.textContent)
+            if (pRightFormated + 6 >= 12) {
+                pRightResult = 12
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+                setTimeout(() => {
+                    Swal.fire({
+                        title: 'VOCÊ GANHOU!!!',
+                        text: 'Deseja continuar?',
+                        showCancelButton: true,
+                        cancelButtonText: 'Cancelar',
+                        confirmButtonText: 'Sim',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            pRight.innerHTML = 0
+                            const winnerRightFormated = parseInt(winnerRight.textContent)
+                            winnerRightResult = winnerRightFormated + 1
+                            const addResultWinner = document.createTextNode(winnerRightResult)
+                            winnerRight.innerHTML = ""
+                            winnerRight.appendChild(addResultWinner)
+                            const loserLeftFormated = parseInt(loserLeft.textContent)
+                            loserLeftResult = loserLeftFormated + 1
+                            const addResultLoser = document.createTextNode(loserLeftResult)
+                            loserLeft.innerHTML = ""
+                            loserLeft.appendChild(addResultLoser)
+                            pLeftResult = 0
+                            const add = document.createTextNode(pLeftResult)
+                            pLeft.innerHTML = ""
+                            pLeft.appendChild(add)
+                        }
+                    })
+                }, "50");
+            } else if (pRightFormated + 6 < 12) {
+                pRightResult = pRightFormated + 6
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+            }
+        }
+        lessOneRight.addEventListener('click', lessOneRightFunction)
+        function lessOneRightFunction() {
+            const pRightFormated = parseInt(pRight.textContent)
+            if (pRightFormated != 0) {
+                pRightResult = pRightFormated - 1
+                const add = document.createTextNode(pRightResult)
+                pRight.innerHTML = ""
+                pRight.appendChild(add)
+            }
+        }
+    </script>
+</body>
+
+</html>
