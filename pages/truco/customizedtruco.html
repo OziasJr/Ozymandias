@@ -15,34 +15,52 @@
     <title>WSJR</title>
 </head>
 <style>
+    main {
+        background-image: url('../../assets/img/img2.jpg');
+        background-size: cover;
+    }
+
     .scoreboard {
-        font-size: 8rem;
+        font-size: 8rem!important;
     }
 
     .table {
         background-image: url('../../assets/img/madeira-three.jpg');
         background-size: cover;
+        box-shadow: 0rem 0rem 10rem #000;
+    }
+
+    .numer-placeholder {
+        font-size: 5rem!important;
+        position: relative!important;
+        bottom: 8rem!important;
     }
 
     @media (max-width: 700px) {
         .name-top {
-            height: 55px;
+            height: 60px!important;
         }
 
         .numbers {
-            width: 90px;
+            height: 80px!important;
         }
 
         .diamond {
-            width: 60px;
+            width: 50px!important;
         }
 
         .clubes {
-            width: 150px;
+            width: 120px!important;
         }
 
         .placar {
-            width: 160px;
+            width: 160px!important;
+        }
+        
+        .numer-placeholder {
+            font-size: 3rem!important;
+            position: relative!important;
+            bottom: 4rem!important;
         }
     }
 </style>
@@ -82,12 +100,12 @@
         </div>
     </header>
     <main>
-        <div class="album py-5 bg-light">
-            <div class="container table">
+        <div class="album py-5">
+            <div class="container table p-0">
                 <row class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-2 text-center">
                     <div class="col mb-3">
-                        <div class="my-2 d-flex flex-column justify-content-center">
-                            <img src="../../assets/title/nos-move.svg" class="name-top m-auto" width="auto" height="100"
+                        <div class="my-2 d-flex flex-column justify-content-center p-0">
+                            <img src="../../assets/title/nos-move.svg" class="name-top m-auto" width="auto" height="150"
                                 alt="">
                             <img src="../../assets/numbers/0.svg" id="image-left" class="numbers m-auto mt-3"
                                 height="150" alt="">
@@ -106,13 +124,14 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/icon/placar-black.svg" class="m-auto mt-3 placar" width="300" alt="">
+                            <img src="../../assets/icon/placar-black.svg" class="m-auto mt-3 placar" width="400" alt="">
+                            <h1 class="fw-bold text-uppercase numer-placeholder" id="placeholderLeft">0</h1>
                         </div>
                     </div>
                     <div class="col mb-3">
-                        <div class="my-2 d-flex flex-column justify-content-center">
+                        <div class="my-2 d-flex flex-column justify-content-center p-0">
                             <img src="../../assets/title/eles-move.svg" class="name-top m-auto" width="auto"
-                                height="100" alt="">
+                                height="150" alt="">
                             <!-- <p class="lead scoreboard fw-bold m-0" id="pRight">0</p>
                             <div class="d-flex flex-column"> -->
                             <img src="../../assets/numbers/0.svg" id="image-right" class="numbers m-auto mt-3"
@@ -131,7 +150,8 @@
                                     </a>
                                 </div>
                             </div>
-                            <img src="../../assets/icon/placar-black.svg" class="m-auto mt-3 placar" width="300" alt="">
+                            <img src="../../assets/icon/placar-black.svg" class="m-auto mt-3 placar" width="400" alt="">
+                            <h1 class="fw-bold text-uppercase numer-placeholder" id="placeholderRight">0</h1>
                         </div>
                     </div>
                 </row>
@@ -203,8 +223,8 @@
         const sixLeft = document.getElementById("sixLeft")
         const lessOneLeft = document.getElementById("lessOneLeft")
 
-        const winnerLeft = document.getElementById("winnerLeft")
-        const loserLeft = document.getElementById("loserLeft")
+        const placeholderLeft = document.getElementById("placeholderLeft")
+        const placeholderRight = document.getElementById("placeholderRight")
 
         // Direito
         const pRight = document.getElementById("pRight")
@@ -237,6 +257,12 @@
                             imageElementLeft.src = images[currentImageIndexLeft];
                             currentImageIndexRight = 0;
                             imageElementRight.src = images[currentImageIndexRight];
+                            
+                            const placeholderLeftFormated = parseInt(placeholderLeft.textContent)
+                            placeholderLeftResult = placeholderLeftFormated + 1
+                            const addResultWinner = document.createTextNode(placeholderLeftResult)
+                            placeholderLeft.innerHTML = ""
+                            placeholderLeft.appendChild(addResultWinner)
                         }
                     })
                 }, "100");
@@ -276,6 +302,12 @@
                             imageElementRight.src = images[currentImageIndexRight];
                             currentImageIndexLeft = 0;
                             imageElementLeft.src = images[currentImageIndexLeft];
+                            
+                            const placeholderRightFormated = parseInt(placeholderRight.textContent)
+                            placeholderRightResult = placeholderRightFormated + 1
+                            const addResultWinner = document.createTextNode(placeholderRightResult)
+                            placeholderRight.innerHTML = ""
+                            placeholderRight.appendChild(addResultWinner)
                         }
                     })
                 }, "100");
