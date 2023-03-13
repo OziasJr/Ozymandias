@@ -26,19 +26,23 @@
 
     @media (max-width: 700px) {
         .name-top {
-            height: 50px;
+            height: 55px;
         }
+
         .numbers {
+            width: 90px;
+        }
+
+        .diamond {
             width: 60px;
         }
-        .diamond {
-            width: 40px;
-        }
+
         .clubes {
-            width: 100px;
+            width: 150px;
         }
+
         .placar {
-            width: 100px;
+            width: 160px;
         }
     }
 </style>
@@ -83,8 +87,10 @@
                 <row class="row row-cols-2 row-cols-sm-2 row-cols-md-2 row-cols-lg-2 row-cols-xl-2 g-2 text-center">
                     <div class="col mb-3">
                         <div class="my-2 d-flex flex-column justify-content-center">
-                            <img src="../../assets/title/nos-move.svg" class="name-top m-auto" width="auto" height="100" alt="">
-                            <img src="../../assets/numbers/0.svg" class="numbers m-auto mt-3" width="150" height="auto" alt="">
+                            <img src="../../assets/title/nos-move.svg" class="name-top m-auto" width="auto" height="100"
+                                alt="">
+                            <img src="../../assets/numbers/0.svg" id="image-left" class="numbers m-auto mt-3"
+                                height="150" alt="">
                             <div class="d-flex flex-column">
                                 <div class="d-flex justify-content-start">
                                     <div class="col-xl-6 col-lg-6 col-mg-6 col-sm-6 col-6">
@@ -105,10 +111,12 @@
                     </div>
                     <div class="col mb-3">
                         <div class="my-2 d-flex flex-column justify-content-center">
-                            <img src="../../assets/title/eles-move.svg" class="name-top m-auto" width="auto" height="100" alt="">
+                            <img src="../../assets/title/eles-move.svg" class="name-top m-auto" width="auto"
+                                height="100" alt="">
                             <!-- <p class="lead scoreboard fw-bold m-0" id="pRight">0</p>
                             <div class="d-flex flex-column"> -->
-                            <img src="../../assets/numbers/0.svg" class="numbers m-auto mt-3" width="150" height="auto" alt="">
+                            <img src="../../assets/numbers/0.svg" id="image-right" class="numbers m-auto mt-3"
+                                height="150" alt="">
                             <div class="d-flex flex-column">
                                 <div class="d-flex justify-content-end">
                                     <div class="col-xl-6 col-lg-6 col-mg-6 col-sm-6 col-6">
@@ -164,6 +172,30 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.1/dist/sweetalert2.all.min.js"></script>
     <script>
+        // Array de Imagens
+        let images = [
+            "../../assets/numbers/0.svg",
+            "../../assets/numbers/1.svg",
+            "../../assets/numbers/2.svg",
+            "../../assets/numbers/3.svg",
+            "../../assets/numbers/4.svg",
+            "../../assets/numbers/5.svg",
+            "../../assets/numbers/6.svg",
+            "../../assets/numbers/7.svg",
+            "../../assets/numbers/8.svg",
+            "../../assets/numbers/9.svg",
+            "../../assets/numbers/10.svg",
+            "../../assets/numbers/11.svg",
+            "../../assets/numbers/12.svg"
+        ];
+        let currentImageIndexLeft = 0;
+        let imageElementLeft = document.getElementById("image-left");
+        imageElementLeft.src = images[currentImageIndexLeft];
+
+        let currentImageIndexRight = 0;
+        let imageElementRight = document.getElementById("image-right");
+        imageElementRight.src = images[currentImageIndexRight];
+
         // Esquerdo
         const pLeft = document.getElementById("pLeft")
         const oneLeft = document.getElementById("oneLeft")
@@ -186,12 +218,12 @@
 
         oneLeft.addEventListener('click', oneLeftFunction)
         function oneLeftFunction() {
-            const pLeftFormated = parseInt(pLeft.textContent)
-            if (pLeftFormated + 1 >= 12) {
-                pLeftResult = 12
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+            event.preventDefault();
+            if (currentImageIndexLeft <= 10) {
+                currentImageIndexLeft++;
+            } else {
+                currentImageIndexLeft = 12;
+                imageElementLeft.src = images[currentImageIndexLeft];
                 setTimeout(() => {
                     Swal.fire({
                         title: 'VOCÊ GANHOU!!!',
@@ -201,151 +233,36 @@
                         confirmButtonText: 'Sim',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                            pRightResult = 0
-                            const add = document.createTextNode(pRightResult)
-                            pRight.innerHTML = ""
-                            pRight.appendChild(add)
+                            currentImageIndexLeft = 0;
+                            imageElementLeft.src = images[currentImageIndexLeft];
+                            currentImageIndexRight = 0;
+                            imageElementRight.src = images[currentImageIndexRight];
                         }
                     })
-                }, "50");
-            } else if (pLeftFormated + 1 < 12) {
-                pLeftResult = pLeftFormated + 1
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+                }, "100");
             }
+            imageElementLeft.src = images[currentImageIndexLeft];
         }
-        threeLeft.addEventListener('click', threeLeftFunction)
-        function threeLeftFunction() {
-            const pLeftFormated = parseInt(pLeft.textContent)
-            if (pLeftFormated + 3 >= 12) {
-                pLeftResult = 12
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
-                setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                            pRightResult = 0
-                            const add = document.createTextNode(pRightResult)
-                            pRight.innerHTML = ""
-                            pRight.appendChild(add)
-                        }
-                    })
-                }, "50");
-            } else if (pLeftFormated + 3 < 12) {
-                pLeftResult = pLeftFormated + 3
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
-            }
-        }
-        sixLeft.addEventListener('click', sixLeftFunction)
-        function sixLeftFunction() {
-            const pLeftFormated = parseInt(pLeft.textContent)
-            if (pLeftFormated + 6 >= 12) {
-                pLeftResult = 12
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
-                setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pLeft.innerHTML = 0
-                            const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                            winnerLeftResult = winnerLeftFormated + 1
-                            const addResultWinner = document.createTextNode(winnerLeftResult)
-                            winnerLeft.innerHTML = ""
-                            winnerLeft.appendChild(addResultWinner)
-                            const loserRightFormated = parseInt(loserRight.textContent)
-                            loserRightResult = loserRightFormated + 1
-                            const addResultLoser = document.createTextNode(loserRightResult)
-                            loserRight.innerHTML = ""
-                            loserRight.appendChild(addResultLoser)
-                            pRightResult = 0
-                            const add = document.createTextNode(pRightResult)
-                            pRight.innerHTML = ""
-                            pRight.appendChild(add)
-                        }
-                    })
-                    // if (confirm("VOCÊ GANHOU !!!\nDeseja Continuar?") == true) {
-                    //     pLeft.innerHTML = 0
-                    //     const winnerLeftFormated = parseInt(winnerLeft.textContent)
-                    //     winnerLeftResult = winnerLeftFormated + 1
-                    //     const addResultWinner = document.createTextNode(winnerLeftResult)
-                    //     winnerLeft.innerHTML = ""
-                    //     winnerLeft.appendChild(addResultWinner)
-                    //     const loserRightFormated = parseInt(loserRight.textContent)
-                    //     loserRightResult = loserRightFormated + 1
-                    //     const addResultLoser = document.createTextNode(loserRightResult)
-                    //     loserRight.innerHTML = ""
-                    //     loserRight.appendChild(addResultLoser)
-                    //     pRightResult = 0
-                    //     const add = document.createTextNode(pRightResult)
-                    //     pRight.innerHTML = ""
-                    //     pRight.appendChild(add)
-                    // }
-                }, "50");
-            } else if (pLeftFormated + 6 < 12) {
-                pLeftResult = pLeftFormated + 6
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
-            }
-        }
+
         lessOneLeft.addEventListener('click', lessOneLeftFunction)
         function lessOneLeftFunction() {
-            const pLeftFormated = parseInt(pLeft.textContent)
-            if (pLeftFormated != 0) {
-                pLeftResult = pLeftFormated - 1
-                const add = document.createTextNode(pLeftResult)
-                pLeft.innerHTML = ""
-                pLeft.appendChild(add)
+            event.preventDefault();
+            if (currentImageIndexLeft > 0) {
+                currentImageIndexLeft--;
+            } else {
+                currentImageIndexLeft = 0;
             }
+            imageElementLeft.src = images[currentImageIndexLeft];
         }
 
         oneRight.addEventListener('click', oneRightFunction)
         function oneRightFunction() {
-            const pRightFormated = parseInt(pRight.textContent)
-            if (pRightFormated + 1 >= 12) {
-                pRightResult = 12
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
+            event.preventDefault();
+            if (currentImageIndexRight <= 10) {
+                currentImageIndexRight++;
+            } else {
+                currentImageIndexRight = 12;
+                imageElementRight.src = images[currentImageIndexRight];
                 setTimeout(() => {
                     Swal.fire({
                         title: 'VOCÊ GANHOU!!!',
@@ -355,145 +272,26 @@
                         confirmButtonText: 'Sim',
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            pRight.innerHTML = 0
-                            const winnerRightFormated = parseInt(winnerRight.textContent)
-                            winnerRightResult = winnerRightFormated + 1
-                            const addResultWinner = document.createTextNode(winnerRightResult)
-                            winnerRight.innerHTML = ""
-                            winnerRight.appendChild(addResultWinner)
-                            const loserLeftFormated = parseInt(loserLeft.textContent)
-                            loserLeftResult = loserLeftFormated + 1
-                            const addResultLoser = document.createTextNode(loserLeftResult)
-                            loserLeft.innerHTML = ""
-                            loserLeft.appendChild(addResultLoser)
-                            pLeftResult = 0
-                            const add = document.createTextNode(pLeftResult)
-                            pLeft.innerHTML = ""
-                            pLeft.appendChild(add)
+                            currentImageIndexRight = 0;
+                            imageElementRight.src = images[currentImageIndexRight];
+                            currentImageIndexLeft = 0;
+                            imageElementLeft.src = images[currentImageIndexLeft];
                         }
                     })
-                    // Swal.fire({
-                    //     title: 'VOCÊ GANHOU!!!',
-                    //     text: 'Deseja continuar?',
-                    //     showCancelButton: true,
-                    //     cancelButtonText: 'Cancelar',
-                    //     confirmButtonText: 'Sim',
-                    // }).then((result) => {
-                    //     if (result.isConfirmed) {
-                    //         pRight.innerHTML = 0
-                    //         const winnerRightFormated = parseInt(winnerRight.textContent)
-                    //         winnerRightResult = winnerRightFormated + 1
-                    //         const addResultWinner = document.createTextNode(winnerRightResult)
-                    //         winnerRight.innerHTML = ""
-                    //         winnerRight.appendChild(addResultWinner)
-                    //         const loserLeftFormated = parseInt(loserLeft.textContent)
-                    //         loserLeftResult = loserLeftFormated + 1
-                    //         const addResultLoser = document.createTextNode(loserLeftResult)
-                    //         loserLeft.innerHTML = ""
-                    //         loserLeft.appendChild(addResultLoser)
-                    //     }
-                    // })
-                }, "50");
-            } else if (pRightFormated + 1 < 12) {
-                pRightResult = pRightFormated + 1
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
+                }, "100");
             }
+            imageElementRight.src = images[currentImageIndexRight];
         }
-        threeRight.addEventListener('click', threeRightFunction)
-        function threeRightFunction() {
-            const pRightFormated = parseInt(pRight.textContent)
-            if (pRightFormated + 3 >= 12) {
-                pRightResult = 12
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
-                setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pRight.innerHTML = 0
-                            const winnerRightFormated = parseInt(winnerRight.textContent)
-                            winnerRightResult = winnerRightFormated + 1
-                            const addResultWinner = document.createTextNode(winnerRightResult)
-                            winnerRight.innerHTML = ""
-                            winnerRight.appendChild(addResultWinner)
-                            const loserLeftFormated = parseInt(loserLeft.textContent)
-                            loserLeftResult = loserLeftFormated + 1
-                            const addResultLoser = document.createTextNode(loserLeftResult)
-                            loserLeft.innerHTML = ""
-                            loserLeft.appendChild(addResultLoser)
-                            pLeftResult = 0
-                            const add = document.createTextNode(pLeftResult)
-                            pLeft.innerHTML = ""
-                            pLeft.appendChild(add)
-                        }
-                    })
-                }, "50");
-            } else if (pRightFormated + 3 < 12) {
-                pRightResult = pRightFormated + 3
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
-            }
-        }
-        sixRight.addEventListener('click', sixRightFunction)
-        function sixRightFunction() {
-            const pRightFormated = parseInt(pRight.textContent)
-            if (pRightFormated + 6 >= 12) {
-                pRightResult = 12
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
-                setTimeout(() => {
-                    Swal.fire({
-                        title: 'VOCÊ GANHOU!!!',
-                        text: 'Deseja continuar?',
-                        showCancelButton: true,
-                        cancelButtonText: 'Cancelar',
-                        confirmButtonText: 'Sim',
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            pRight.innerHTML = 0
-                            const winnerRightFormated = parseInt(winnerRight.textContent)
-                            winnerRightResult = winnerRightFormated + 1
-                            const addResultWinner = document.createTextNode(winnerRightResult)
-                            winnerRight.innerHTML = ""
-                            winnerRight.appendChild(addResultWinner)
-                            const loserLeftFormated = parseInt(loserLeft.textContent)
-                            loserLeftResult = loserLeftFormated + 1
-                            const addResultLoser = document.createTextNode(loserLeftResult)
-                            loserLeft.innerHTML = ""
-                            loserLeft.appendChild(addResultLoser)
-                            pLeftResult = 0
-                            const add = document.createTextNode(pLeftResult)
-                            pLeft.innerHTML = ""
-                            pLeft.appendChild(add)
-                        }
-                    })
-                }, "50");
-            } else if (pRightFormated + 6 < 12) {
-                pRightResult = pRightFormated + 6
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
-            }
-        }
+        
         lessOneRight.addEventListener('click', lessOneRightFunction)
         function lessOneRightFunction() {
-            const pRightFormated = parseInt(pRight.textContent)
-            if (pRightFormated != 0) {
-                pRightResult = pRightFormated - 1
-                const add = document.createTextNode(pRightResult)
-                pRight.innerHTML = ""
-                pRight.appendChild(add)
+            event.preventDefault();
+            if (currentImageIndexRight > 0) {
+                currentImageIndexRight--;
+            } else {
+                currentImageIndexRight = 0;
             }
+            imageElementRight.src = images[currentImageIndexRight];
         }
     </script>
 </body>
